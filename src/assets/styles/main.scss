@@ -5,7 +5,11 @@
 .wrapper {
     color: $main-color;
 }
-
+.wrapper .who{
+    z-index: 1000;
+    position: relative;
+    top: 500px;
+}
 @media (max-width: 1024px) {
     html body {
         padding: 16px 10px 12px;
@@ -478,7 +482,7 @@ body {
     &__wheel {
         z-index: 14;
         position: relative;
-        top: 186px;
+        top: 440px;
         left: 207px;
         border-radius: 50%;
         height: 118px;

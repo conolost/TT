@@ -15,11 +15,13 @@
     <div class="main">
       <nav class="main__menu">
         <ul class="main__list">
-          <li><a href="#" class="where">where?</a></li>
-          <li><a href="#" class="what">what?</a></li>
-          <li><a href="#" class="who">who?</a></li>
-          <router-link to="/whoPage" class="who">who?</router-link>
-          <router-view></router-view>
+          <li>
+            <router-link to="#/wherePage" class="where">where?</router-link>
+          </li>
+          <li>
+            <router-link to="#/whatPage" class="what">what?</router-link>
+          </li>
+          <li><router-link to="#/whoPage" class="who">who?</router-link></li>
         </ul>
       </nav>
       <div class="main__circle-bg"></div>
@@ -51,16 +53,15 @@
     </div>
   </div>
 </template>
-
 <script>
-import LangSelect from "./components/langSelect.vue";
+import { defineComponent } from "@vue/composition-api";
+import LangSelect from "../components/langSelect.vue";
 
-export default {
-  name: "App",
+export default defineComponent({
   components: {
     LangSelect,
   },
-  data() {
+  setup() {
     return {
       isLoaded: false,
       rotatedWheel: {},
@@ -76,10 +77,8 @@ export default {
       this.isLoaded = true;
     }, 1000);
     this.getAngle();
-
     // this.setMouseParallaxStyle();
   },
-
   methods: {
     getAngle() {
       this.rotatedWheelChars = [];
@@ -98,7 +97,7 @@ export default {
     //   const coordY = e.pageY - parallaxHeight / 2;
     //   this.coordXpercent = (coordX / parallaxWidth) * 100;
     //   this.coordYpercent = (coordY / parallaxHeight) * 100;
-    // },
+    // }
     // setMouseParallaxStyle() {
     //   const coeficient = 10;
     //   const speed = 0.1;
@@ -108,23 +107,7 @@ export default {
     //   this.posX += distX * speed;
     //   this.posY += distY * speed;
     //   window.requestAnimationFrame(this.setMouseParallaxStyle());
-    //   return `translate(${this.posX / coeficient}%, ${
-    //     this.posY / coeficient
-    //   }%)`;
-
     // },
   },
-};
+});
 </script>
-
-<style lang="scss">
-$main-color: #ffc107;
-// #app {
-//   font-family: Avenir, Helvetica, Arial, sans-serif;
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-//   text-align: center;
-//   color: $main-color;
-//   margin-top: 60px;
-// }
-</style>
