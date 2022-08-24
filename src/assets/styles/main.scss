@@ -2,14 +2,6 @@
 @import "./fontStyle.scss";
 @import "./nullstyle.scss";
 
-.wrapper {
-    color: $main-color;
-}
-.wrapper .who{
-    z-index: 1000;
-    position: relative;
-    top: 500px;
-}
 @media (max-width: 1024px) {
     html body {
         padding: 16px 10px 12px;
@@ -17,10 +9,10 @@
 }
 
 body {
-    font-family: "Grtsk Giga";
+    font-family: $main-font;
     background-color: #bebebe;
-    color: #373737;
-    font-family: "Grtsk Giga";
+    color: $main-color;
+    font-family: $main-font;
     font-weight: 700;
     font-size: 16px;
     padding: 24px 19px 19px;
@@ -47,7 +39,6 @@ body {
     grid-area: header;
     display: grid;
     grid-template: 1fr / 1fr 2fr 1fr;
-    // .header__language
 
     &__language {
         position: relative;
@@ -64,8 +55,6 @@ body {
         }
     }
 
-    // .header__lang-icon
-
     &__lang-icon {
         display: inline-block;
         transform: translate(35%, 35%);
@@ -74,12 +63,9 @@ body {
         line-height: 1.4;
     }
 
-    // .header__lang-wrapper
-
     &__lang-wrapper {
         padding-top: 15px;
         position: absolute;
-        // top: 100%;
         left: 50%;
         transform: translateX(-50%);
         opacity: 0;
@@ -87,15 +73,11 @@ body {
         transition: all 0.2s ease;
     }
 
-    // .header__lang-list
-
     &__lang-list {
         box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
         border-radius: 20%;
         display: flex;
     }
-
-    // .header__lang
 
     &__lang {}
 
@@ -161,19 +143,17 @@ body {
     z-index: 16;
     font-family: "Orbitron", sans-serif;
     font-weight: 200;
-    // .logo_sub-name
 
     &_sub-name {
         font-size: 5px;
         color: #000;
     }
 
-    // .logo__name
-
     &__name {
         font-size: 32px;
-        transform: scale(0.8, 1);
-        letter-spacing: 3px;
+        // line-height: 50px;
+        // transform: scale(0.8, 1);
+        // letter-spacing: 3px;
         -webkit-text-stroke: 1px #000;
 
         position: relative;
@@ -186,9 +166,24 @@ body {
             transition: background-position 5s ease;
             background-position: 0 100%;
         }
+        perspective:30px;
+        transform-style:flat;
     }
 
-    &__letter {}
+    
+        // &__letter{
+        //     display: inline-block;
+        // }
+    &__letter:nth-child(2) {
+        display: inline-block;
+        vertical-align: baseline;
+        transform-origin: left;
+        transform: rotateY(-15deg) scaleX(1.06);
+        background: inherit;
+        background-size: inherit;
+        -webkit-background-clip: inherit;
+            background-position: inherit;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -216,14 +211,13 @@ body {
         }
 
         &__wheel {
-            top: 147px;
-            left: 164px;
+            top: 65%;
+            left: 60.5%;
             height: 112px;
             width: 112px;
 
-            // overflow: visible;
             &_inner span {
-                font-size: 7px;
+                font-size: 10px;
                 transform-origin: 0 56px;
             }
         }
@@ -245,7 +239,7 @@ body {
 @media (max-width: 870px) {
     .wrapper .main {
         &__wheel {
-            top: 160px;
+            top: 70%;
         }
     }
 }
@@ -253,8 +247,8 @@ body {
 @media (max-width: 768px) {
     .wrapper .main {
         &__wheel {
-            top: 170px;
-            left: 150px;
+            top: 62.5%;
+            left: 62%;
         }
 
         &__text {
@@ -293,14 +287,13 @@ body {
         }
 
         &__wheel {
-            top: 305px;
-            left: 70px;
+            top: 64.5%;
+            left: 57%;
             height: 88px;
             width: 88px;
 
-            // overflow: visible;
             &_inner span {
-                font-size: 7px;
+                font-size: 8px;
                 transform-origin: 0 45px;
             }
         }
@@ -316,35 +309,31 @@ body {
     grid-area: main;
     display: grid;
     justify-items: center;
-    // .main__menu
 
     &__menu {}
 
-    // .main__list
-
     &__list {}
 
-    // .main__link
     &__list>li>a {
         display: inline-block;
-        font-family: "Grtsk Giga";
+        font-family: $main-font;
         font-size: 16px;
         font-weight: 600;
         line-height: 1.4;
         text-align: center;
-        color: #373737;
+        color: $main-color;
         position: absolute;
         z-index: 15;
 
         &:hover {
-            color: #fff;
+            color: $lnk-hover;
         }
 
         &:after {
             content: "";
             position: absolute;
             left: 0;
-            background-color: #fff;
+            background-color: $lnk-hover;
             transition: transform 0.25s ease-out;
         }
     }
@@ -408,7 +397,6 @@ body {
         }
     }
 
-    // .main__text
     &__circle-bg {
         position: absolute;
         top: 50%;
@@ -418,13 +406,13 @@ body {
         border-radius: 50%;
         -webkit-filter: blur(76px);
         filter: blur(76px);
-        background-color: #ffcb46;
+        background-color: $circle-bg;
         z-index: 10;
     }
 
     &__text {
         display: inline-block;
-        font-family: Grtsk Giga;
+        font-family: $main-font;
         font-size: 82px;
         font-weight: bold;
         line-height: 1.1;
@@ -437,15 +425,13 @@ body {
         transform: translateY(-50%);
     }
 
-    // .main__running-line
-
     &__running-line {
         position: absolute;
         top: 50%;
-        opacity: 0.1;
+        opacity: 0.15;
         -webkit-text-fill-color: transparent;
-        -webkit-text-stroke: 1px #373737;
-        font-family: "Grtsk Giga";
+        -webkit-text-stroke: 1px $main-color;
+        font-family: $main-font;
         font-size: 52px;
         font-weight: bold;
         font-stretch: normal;
@@ -456,13 +442,10 @@ body {
         white-space: nowrap;
         overflow: hidden;
         width: 100%;
-        // .main__running-line_top
 
         &_top {
             transform: rotate(-210deg) translateY(100%);
         }
-
-        // .main__running-line_bottom
 
         &_bottom {
             transform: rotate(-30deg) translateY(100%);
@@ -477,13 +460,11 @@ body {
         animation: scroll 50s infinite linear;
     }
 
-    // .main__cycle
-
     &__wheel {
         z-index: 14;
-        position: relative;
-        top: 440px;
-        left: 207px;
+        position: absolute;
+        top: 67%;
+        left: 60%;
         border-radius: 50%;
         height: 118px;
         width: 118px;
@@ -495,21 +476,17 @@ body {
             color: #37474f;
             text-align: center;
             pointer-events: none;
-            /*не применять событие мыши*/
             user-select: none;
-            /*запрет на выбор текста*/
         }
 
         &_inner span {
-            font-size: 9px;
+            font-size: 10px;
             font-weight: 600;
             color: #fff;
             position: absolute;
             display: inline-block;
-            /*отображать как блочно-строчный*/
             transform-origin: 0 60px;
 
-            /*откуда начинать трансформацию*/
             .main__wheel:hover & {
                 animation: rotate-wheel;
                 animation-duration: 60s;
